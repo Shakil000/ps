@@ -59,3 +59,6 @@ SELECT * FROM student
 where grade = 'A+' AND course = 'JS';
 SELECT * FROM student
 where (country = 'USA' OR country = 'SA') AND age = 20;
+
+SELECT * FROM student
+where (country = 'USA' OR country = 'SA') AND age = 20;
