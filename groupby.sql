@@ -65,7 +65,8 @@ SELECT salary, COUNT(*), AVG(salary) FROM employees
     HAVING AVG(salary) > 65000;
 SELECT * FROM departments;
 SELECT * FROM employees;
-SELECT EXTRACT(year FROM hire_date) as Join_Date
+SELECT EXTRACT(year FROM hire_date) as Join_Date, COUNT(*)
  FROM employees
  GROUP BY EXTRACT(year FROM hire_date)
+--GROUP BY join_date
  ORDER BY Join_Date DESC;
