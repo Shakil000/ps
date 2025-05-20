@@ -10,6 +10,11 @@ CREATE TABLE post(
     title text NOT NULL,
     user_id INT REFERENCES "user"(id) ON DELETE CASCADE
 );
+CREATE TABLE post(
+    id SERIAL PRIMARY KEY,
+    title text NOT NULL,
+    user_id INT REFERENCES "user"(id) ON DELETE set DEFAULT DEFAULT 6
+);
 
 INSERT INTO "user"(username)
 VALUES
@@ -22,7 +27,7 @@ DROP TABLE "user";
 DROP TABLE post;
 
 INSERT INTO post(title, user_id)
-    VALUES('Allah Mohan, I love Allah',2),
+    VALUES('Allah Mohan I love Allah',2),
     ('Many days ago',3),
     ('There was a programmer',6),
     ('He know js',5),
@@ -32,4 +37,4 @@ INSERT INTO post(title, user_id)
     ('He is a successful developer',7)
 
 SELECT * FROM "user";
-SELECT * FROM post;
+SELECT * FROM post; 

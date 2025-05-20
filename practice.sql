@@ -58,18 +58,34 @@ INSERT INTO departments (department_name) VALUES
     ('Research'), 
     ('Quality Assurance');
 
-SELECT salary, COUNT(*), AVG(salary) FROM employees 
-    GROUP BY salary;
-    SELECT salary, COUNT(*), AVG(salary) FROM employees 
-    GROUP BY salary
-    HAVING AVG(salary) > 65000;
+
 SELECT * FROM departments;
+
 SELECT * FROM employees;
-SELECT EXTRACT(year FROM hire_date) as Join_Date, COUNT(*)
- FROM employees
- GROUP BY EXTRACT(year FROM hire_date)
---GROUP BY join_date
- ORDER BY Join_Date DESC;
 
  drop TABLE employees;
  drop TABLE departments;
+SELECT employee_name, department_name from employees
+INNER JOIN departments ON departments.department_id = employees.department_id;
+
+SELECT employee_name, department_name from employees
+INNER JOIN departments USING(department_id);
+
+SELECT department_name, round(AVG(salary)) FROM employees
+JOIN departments ON departments.department_id = employees.department_id
+GROUP BY department_name;
+
+--Count employee in each departments
+SELECT department_name, COUNT(*) from employees
+JOIN departments ON departments.department_id = employees.department_id
+GROUP BY department_name;
+
+--Find the department name with height average salary
+SELECT department_name, round(AVG(salary)) as Total FROM employees
+JOIN departments ON departments.department_id = employees.department_id
+GROUP BY department_name
+ORDER BY Total DESC
+LIMIT 1;
+
+SELECT EXTRACT(year FROM hire_date), COUNT(*) as Total FROM employees
+GROUP BY EXTRACT(year FROM hire_date);
